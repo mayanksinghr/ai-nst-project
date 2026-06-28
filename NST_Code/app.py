@@ -35,7 +35,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 encoder = VGGEncoder('vgg_normalised.pth').to(device)
 decoder = Decoder().to(device)
-decoder.load_state_dict(torch.load('/home/ubuntu/Desktop/NST_Code/experiment/final_exp/decoder_final.pth'))
+decoder.load_state_dict(torch.load(
+    'experiment/final_exp/decoder_final.pth',
+    map_location=device
+))
 
 encoder.eval()
 decoder.eval()
